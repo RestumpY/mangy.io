@@ -39,10 +39,10 @@ function dashboard()
         //if($_SESSION['id']) header("Location: index.php?page=dashboard"); else $alert = 1;
     }
     if ($_POST['idPost'] and $_POST['comment']) {
-        addComment($_SESSION['id'], $_POST['idPost'], $_POST['comment']);
+        addComment($_POST['idPost'], $_SESSION['id'], $_POST['comment']);
     }
     $posts = getLines('post', '', '');
-    $title = 'Tableau de bord';
+    $title = 'Fil d\'actualité';
     require 'views/dashboardView.php';
 }
 
