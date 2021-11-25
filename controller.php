@@ -68,3 +68,8 @@ function logout()
     header("location: index.php");
     exit();
 }
+
+function messagerie(){
+    
+    require 'views/messagerieView.php';
+}
