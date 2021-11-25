@@ -40,8 +40,7 @@
                 <div class="header">
                     <nav class="navbar navbar-expand-md navbar-light px-0">
                         <a class="navbar-brand" href="#">
-                            <img src="https://wrappixel.com/demos/free-admin-templates/all-lite-landing-pages/assets/images/logos/ample-logo--lp-dark.png"
-                                alt="logo">
+                            <img src="images/mangue.png" style="width:50px;" alt="logo">
                             <span>
                                 <img src="https://wrappixel.com/demos/free-admin-templates/all-lite-landing-pages/assets/images/logos/ample-logo-text-lp-dark.png"
                                     alt="logo">
@@ -55,12 +54,12 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item pr-3">
-                                    <a href="https://wrappixel.com/templates/ample-admin-lite/"
-                                        class="btn btn-custom btn-outline-info btn-lg" target="_blank">Free Download</a>
+                                    <a href="index.php?page=signin"
+                                        class="btn btn-custom btn-outline-info btn-lg" >Inscription</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="https://www.wrappixel.com/templates/ampleadmin/?ref=33"
-                                        class="btn btn-custom btn-info btn-lg" target="_blank">Check Pro Version</a>
+                                    <a href="index.php?page=login"
+                                        class="btn btn-custom btn-info btn-lg" >Connexion</a>
                                 </li>
                             </ul>
                         </div>
@@ -85,8 +84,8 @@
         <!-- ============================================================== -->
         <!-- End page wrapperHeader part -->
         <!-- ============================================================== -->
-        <footer class="text-center p-4"> All Rights Reserved by Ample Admin. Designed and Developed by <a
-                href="https://wrappixel.com">WrapPixel.com</a></footer>
+        <footer class="text-center p-4"> All Rights Reserved by Mangy. Designed and Developed by <a
+                href="https://www.ecole-ipssi.com">IPSSI</a></footer>
     </div>
 </body>
 <!-- ============================================================== -->
