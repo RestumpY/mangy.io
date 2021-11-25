@@ -2,7 +2,7 @@
 function query($request, $type)
 {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=test', 'debian-sys-maint', 'b4LRGDGsIGFmwbwl');
+        $db = new PDO('mysql:host=localhost;dbname=mangy', 'debian-sys-maint', 'b4LRGDGsIGFmwbwl');
         if($type=='select'){
             $sth = $db->prepare($request);
             $sth->execute();
@@ -30,6 +30,13 @@ function addUser($first_name, $last_name, $email, $password){
     $email = addslashes($email);
     $password = md5($password);
     $request = 'INSERT INTO user (first_name, last_name, email, password) values ("'.$first_name.'", "'.$last_name.'", "'.$email.'", "'.$password.'")';
+    $_SESSION['id'] = query($request,'insert');
+}
+
+function addPost($idUser, $title, $content){
+    $title = addslashes($title);
+    $content = addslashes($last_name);
+    $request = 'INSERT INTO post (idUser, title, content) values ("'.$idUser.'","'.$title.'", "'.$content.'")';
     $_SESSION['id'] = query($request,'insert');
 }
 
