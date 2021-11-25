@@ -40,9 +40,9 @@
                 <div class="header">
                     <nav class="navbar navbar-expand-md navbar-light px-0">
                         <a class="navbar-brand" href="#">
-                            <img src="images/mangue.png" style="width:50px;" alt="logo">
+                            
                             <span>
-                                <img src="https://wrappixel.com/demos/free-admin-templates/all-lite-landing-pages/assets/images/logos/ample-logo-text-lp-dark.png"
+                                <img src="images/Logo.PNG" style = "height:120px"
                                     alt="logo">
                             </span>
                         </a>
