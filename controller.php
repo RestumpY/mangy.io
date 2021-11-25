@@ -23,6 +23,11 @@ function dashboard(){
     if(!$_SESSION['id']) header("Location: index.php?page=signIn");
     $user = getLine('user', 'id', $_SESSION['id']);
     $meteo = meteo();
+    if($_POST){
+        print_r($_POST);
+        addPost($_SESSION['id'], $_POST['title'], $_POST['content']);
+        if($_SESSION['id']) header("Location: index.php?page=dashboard"); else $alert = 1;
+    }
     $title = 'Tableau de bord';
     require 'views/dashboardView.php';
 }
