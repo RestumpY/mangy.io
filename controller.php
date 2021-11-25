@@ -2,6 +2,10 @@
 require 'model.php';
 session_start();
 
+function index(){
+    require 'views/indexView.php';
+}
+
 function signin(){
     if($_SESSION['id']) header("Location: index.php?page=dashboard");
     if($_POST){
