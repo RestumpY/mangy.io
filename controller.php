@@ -27,13 +27,16 @@ function login(){
 function dashboard(){
     if(!$_SESSION['id']) header("Location: index.php?page=signIn");
     $user = getLine('user', 'id', $_SESSION['id']);
-    $posts = getLines('post', '', '');
     $meteo = meteo();
-    if($_POST){
-        print_r($_POST);
+    if($_POST['title'] and $_POST['content']){
+        //print_r($_POST);
         addPost($_SESSION['id'], $_POST['title'], $_POST['content']);
-        if($_SESSION['id']) header("Location: index.php?page=dashboard"); else $alert = 1;
+        //if($_SESSION['id']) header("Location: index.php?page=dashboard"); else $alert = 1;
     }
+    if($_POST['idPost'] and $_POST['comment']){
+        addComment($_SESSION['id'], $_POST['idPost'], $_POST['comment']);
+    }
+    $posts = getLines('post', '', '');
     $title = 'Tableau de bord';
     require 'views/dashboardView.php';
 }
