@@ -23,11 +23,28 @@
                 <div class="col-md-12 mt-3">
                     <h2>Fil d'actualité</h2>
                     <div class="row">
-                        <?php foreach ($posts as $post) : ?>
+                        <?php foreach ($posts as $post) :
+                            $user2 = getLine('user', 'id', $post['idUser']);
+                            $comments = getLines('comment', 'idPost', $post['id']);
+                        ?>
                             <div class="col-md-12">
                                 <div class="white-box analytics-info">
+                                    <h4><?= $user2[0]['first_name']; ?></h4>
                                     <h3><?= $post['title']; ?></h3>
                                         <p><strong><?= $post['content']; ?></strong></p>
+                                        <hr>
+                                        <?php foreach ($comments as $comment) :
+                                        $user3 = getLine('user', 'id', $comment['idUser']);
+                                        ?>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h5><?= $user3[0]['first_name']; ?></h5>
+                                                <p><?= $comment['content']; ?>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <?php endforeach; ?>
                     <form action="" method="POST">
                         <h4>Votre commentaire</h4>
                         <div class="form-group">

@@ -66,11 +66,12 @@ function getLine($table, $input, $value)
 function getLines($table, $input, $value)
 {
     $value = addslashes($value);
-    if ($value) {
+    if ($value!='') {
         $request = 'SELECT * FROM ' . $table . ' where ' . $input . ' = "' . $value . '" order by id desc';
     } else {
         $request = 'SELECT * FROM ' . $table . ' order by id desc';
     }
+    //echo $request;
     return query($request, 'select');
 }
 
