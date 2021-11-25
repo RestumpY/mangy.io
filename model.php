@@ -62,7 +62,7 @@ function getLine($table, $input, $value)
     $request = 'SELECT * FROM user where ' . $input . ' = "' . $value . '"';
     return query($request, 'select');
 }
- 
+
 function getLines($table, $input, $value)
 {
     $value = addslashes($value);
