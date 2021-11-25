@@ -20,4 +20,4 @@
         </a>
     </div>
 </div>
-<?php $content = ob_get_clean(); require('template2.php'); ?>
+<?php $content = ob_get_clean(); require('template4.php'); ?>

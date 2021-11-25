@@ -23,6 +23,7 @@ function login(){
     }
     require 'views/loginView.php';
 }
+
 function dashboard(){
     if(!$_SESSION['id']) header("Location: index.php?page=signIn");
     $user = getLine('user', 'id', $_SESSION['id']);
@@ -35,6 +36,12 @@ function dashboard(){
     $title = 'Tableau de bord';
     require 'views/dashboardView.php';
 }
+
+function dashboard2(){
+    
+    require 'views/dashboardView.php';
+}
+
 
 function settings(){
     if(!$_SESSION['id']) header("Location: index.php?page=signIn");
