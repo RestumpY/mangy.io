@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 require 'model.php';
 session_start();
 
@@ -86,6 +87,40 @@ function messagerie()
 
 function profil()
 {
+    //if (!$_SESSION['id']) header("Location: index.php?page=signIn");
+    if ($_POST) {
+        foreach ($_POST as $key => $value) {
+            if ($value != '' and $key != 'password') update('user', $key, $value, 'id', $_SESSION['id']);
+            if ($value != '' and $key == 'password') update('user', $key, md5($value), 'id', $_SESSION['id']);
+        }
+        if ($_FILES["photo"]["tmp_name"]) {
+            update('user', 'photo', $_FILES["photo"]["name"], 'id', $_SESSION['id']);
+            $target_dir = "plugins/images/users/";
+            $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+                    echo "The file " . htmlspecialchars(basename($_FILES["photo"]["name"])) . " has been uploaded.";
+                } else {
+                    echo "Sorry, there was an error uploading your file.";
+                }
+            }
+        }
+    }
+    if ($_GET['action'] == 'delete') {
+        delete('user', 'id', $_SESSION['id']);
+        unset($_SESSION['id']);
+        header("Location: index.php?page=signIn");
+    }
     $user = getLine('user', 'id', $_SESSION['id']);
+    if ($user[0]['photo'] != '') $src = $user[0]['photo'];
+    else $src = 'no-img.png';
+    $title = 'Mon profil';
     require 'views/profilView.php';
 }

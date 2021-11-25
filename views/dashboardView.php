@@ -25,7 +25,7 @@
                 <div class="row">
                     <?php foreach ($posts as $post) :
                         $user2 = getLine('user', 'id', $post['idUser']);
-                        if($user2['photo'][0]!='') $src = $user2[0]['photo']; else $src = 'no-img.png';
+                        if($user2[0]['photo']!='') $src = $user2[0]['photo']; else $src = 'no-img.png';
                         $comments = getLines('comment', 'idPost', $post['id']);
                     ?>
                         <div class="col-md-12">
