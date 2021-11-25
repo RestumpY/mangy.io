@@ -3,19 +3,19 @@ function query($request, $type)
 {
     try {
         $db = new PDO('mysql:host=localhost;dbname=mangy', 'debian-sys-maint', 'b4LRGDGsIGFmwbwl');
-        if($type=='select'){
+        if ($type == 'select') {
             $sth = $db->prepare($request);
             $sth->execute();
             $result = $sth->fetchAll();
             return $result;
         }
-        if($type=='insert'){
+        if ($type == 'insert') {
             if ($db->query($request) == TRUE) {
                 $last_id = $db->lastInsertId();
                 return $last_id;
-              } else {
+            } else {
                 echo "Error: " . $request . "<br>" . $db->error;
-              }
+            }
         }
         $db = null;
     } catch (PDOException $e) {
@@ -24,44 +24,68 @@ function query($request, $type)
     }
 }
 
-function addUser($first_name, $last_name, $email, $password){
+function addUser($first_name, $last_name, $email, $password)
+{
     $first_name = addslashes($first_name);
     $last_name = addslashes($last_name);
     $email = addslashes($email);
     $password = md5($password);
-    $request = 'INSERT INTO user (first_name, last_name, email, password) values ("'.$first_name.'", "'.$last_name.'", "'.$email.'", "'.$password.'")';
-    $_SESSION['id'] = query($request,'insert');
+    $request = 'INSERT INTO user (first_name, last_name, email, password) values ("' . $first_name . '", "' . $last_name . '", "' . $email . '", "' . $password . '")';
+    $_SESSION['id'] = query($request, 'insert');
 }
 
-function addPost($idUser, $title, $content){
+function addPost($idUser, $title, $content)
+{
     $title = addslashes($title);
-    $content = addslashes($last_name);
-    $request = 'INSERT INTO post (idUser, title, content) values ("'.$idUser.'","'.$title.'", "'.$content.'")';
-    $_SESSION['id'] = query($request,'insert');
+    $content = addslashes($content);
+    $request = 'INSERT INTO post (idUser, title, content) values ("' . $idUser . '","' . $title . '", "' . $content . '")';
+    query($request, 'insert');
 }
 
-function loginUser($email, $password){
-    $request='SELECT id FROM user where email = "'.$email.'" and password = "'.md5($password).'"';
-    if(query($request,'select')) echo 'exist';
-    $_SESSION['id'] = query($request,'select')[0]['id'];
+function addComment($idPost, $idUser, $content)
+{
+    $content = addslashes($content);
+    $request = 'INSERT INTO comment (idPost, idUser, content) values ("' . $idPost . '","' . $idUser . '", "' . $content . '")';
+    query($request, 'insert');
 }
 
-function getLine($table, $input, $value){
+function loginUser($email, $password)
+{
+    $request = 'SELECT id FROM user where email = "' . $email . '" and password = "' . md5($password) . '"';
+    if (query($request, 'select')) echo 'exist';
+    $_SESSION['id'] = query($request, 'select')[0]['id'];
+}
+
+function getLine($table, $input, $value)
+{
     $value = addslashes($value);
-    $request = 'SELECT * FROM user where '.$input.' = "'.$value.'"';
-    return query($request,'select');
+    $request = 'SELECT * FROM user where ' . $input . ' = "' . $value . '"';
+    return query($request, 'select');
 }
 
-function update($table, $input, $value, $input2, $value2){
+function getLines($table, $input, $value)
+{
     $value = addslashes($value);
-    $request = 'UPDATE '.$table.' set '.$input.' = "'.$value.'" where  '.$input2.' = "'.$value2.'"';
+    if ($value) {
+        $request = 'SELECT * FROM ' . $table . ' where ' . $input . ' = "' . $value . '" order by id desc';
+    } else {
+        $request = 'SELECT * FROM ' . $table . ' order by id desc';
+    }
+    return query($request, 'select');
+}
+
+function update($table, $input, $value, $input2, $value2)
+{
+    $value = addslashes($value);
+    $request = 'UPDATE ' . $table . ' set ' . $input . ' = "' . $value . '" where  ' . $input2 . ' = "' . $value2 . '"';
     //echo $request;
-    return query($request,'select');
+    return query($request, 'select');
 }
 
-function delete($table, $input, $value){
-    $request = 'DELETE FROM '.$table.' where  '.$input.' = "'.$value.'"';
-    query($request,'select');
+function delete($table, $input, $value)
+{
+    $request = 'DELETE FROM ' . $table . ' where  ' . $input . ' = "' . $value . '"';
+    query($request, 'select');
 }
 
 function meteo()
