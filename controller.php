@@ -27,6 +27,7 @@ function login(){
 function dashboard(){
     if(!$_SESSION['id']) header("Location: index.php?page=signIn");
     $user = getLine('user', 'id', $_SESSION['id']);
+    $posts = getLines('post', '', '');
     $meteo = meteo();
     if($_POST){
         print_r($_POST);
