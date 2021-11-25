@@ -47,10 +47,7 @@ function loginUser($email, $password){
 }
 
 function getLine($table, $input, $value){
-    $first_name = addslashes($first_name);
-    $last_name = addslashes($last_name);
-    $email = addslashes($email);
-    $password = md5($password);
+    $value = addslashes($value);
     $request = 'SELECT * FROM user where '.$input.' = "'.$value.'"';
     return query($request,'select');
 }
