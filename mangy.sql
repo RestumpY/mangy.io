@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 25 nov. 2021 à 16:16
+-- Généré le : jeu. 25 nov. 2021 à 16:46
 -- Version du serveur :  8.0.27-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.3
 
@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   `idPost` int NOT NULL,
   `idUser` int NOT NULL,
   `content` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `comment`
@@ -54,7 +54,7 @@ CREATE TABLE `post` (
   `idUser` int NOT NULL,
   `title` varchar(100) NOT NULL,
   `content` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `post`
@@ -78,12 +78,12 @@ CREATE TABLE `user` (
   `last_name` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `sexe` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `photo` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `city` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `sexe` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `photo` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `city` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `birthDate` date DEFAULT NULL,
   `registration_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `user`
